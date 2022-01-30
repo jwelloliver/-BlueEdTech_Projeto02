@@ -29,19 +29,24 @@ Para esse projeto, os requisitos fundamentais serão:
 7. Determinar quem foi o grande campeão de acordo com a quantidade de vitórias de cada um (computador e jogador);
 8. Perguntar se o Jogador quer jogar novamente: Se sim volte ao primeiro passo, se não finalize o programa.
 
-## Desemvolvimento do código
+## Desenvolvimento do código
 
 ```javascript
 
 // Solicitar quantidade de rodadas que ira fazer
-
 let rodadas = +prompt('Digite numero de rodadas: ');
 
 ```
-
 ```javascript
 // Declarando as variaveis
 let cont = 0; // contadora para usar no while
 let vitoriaMinha = 0; // contadora numero de vitorias do Usuario
 let vitoriaPc = 0 ; // contadora numero de Vitorias do Computador
+```
+```javascript
+// Criando um lista de pedra, papel e tesoura
+const listaJogo = ['PEDRA','PAPEL','TESOURA'];
+```
+```javascript
+
 ```
