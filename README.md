@@ -48,5 +48,53 @@ let vitoriaPc = 0 ; // contadora numero de Vitorias do Computador
 const listaJogo = ['PEDRA','PAPEL','TESOURA'];
 ```
 ```javascript
+// Começo de um laço de repetição de acordo com a quantidade de laço que ira acontecer
+while (cont < rodadas) { 
+
+// Criando a variavel minha escolha, captura a escolha do usuario
+var minhaEscolha = prompt("Digite entre Pedra, Papel ou Tesoura: ").toUpperCase();
+ 
+// Escolhendo de forma eleatoria indice dentro da listaJogos, e armazenando em uma variavel a decisão do Computador
+const pcEscolha = listaJogo[Math.floor(Math.random() * listaJogo.length)];
+
+// imprimindo minha decisao e do computador
+console.log(`\nMinha Decisao: ${minhaEscolha}`);
+console.log(`Decisao do compudator: ${pcEscolha}\n`);
+
+// Condições para cada um Ganhar ou Perder e acumulando a vitoria de cada um na rodadas
+if (pcEscolha == 'PEDRA' && minhaEscolha == 'TESOURA') {    
+    console.log("Computador Ganhou !!");
+    vitoriaPc = vitoriaPc + 1;    
+}if (minhaEscolha == 'PEDRA' && pcEscolha == 'TESOURA') {
+    console.log("Voce Ganhou !!");
+    vitoriaMinha = vitoriaMinha + 1;     
+}if (pcEscolha == 'PEDRA' && minhaEscolha == 'PAPEL') {
+    console.log("Voce Ganhou !!");
+    vitoriaMinha = vitoriaMinha + 1;  
+}if (minhaEscolha == 'PEDRA' && pcEscolha == 'PAPEL') {
+    console.log("Computador Ganhou !!");
+    vitoriaPc = vitoriaPc + 1;
+}if (minhaEscolha == 'TESOURA' && pcEscolha == 'PAPEL') {
+    console.log("Voce Ganhou !!");
+    vitoriaMinha = vitoriaMinha + 1;  
+}if (pcEscolha == 'TESOURA' && minhaEscolha == 'PAPEL') {
+    console.log("Computador Ganhou !!");
+    vitoriaPc = vitoriaPc + 1;
+}if (pcEscolha == minhaEscolha) {
+    console.log("Ninguem Ganhou !!");
+}
+    cont++;
+} //Finalizando while
+
+// Condição fora do While para Esclarecer o vencedor por quantidade de Rodadas vencidas
+if (vitoriaMinha > vitoriaPc) {
+    console.log(`\nVocê venceu com total de vitoria: ${vitoriaMinha}`);
+    console.log(`computador perdeu com total de vitoria: ${vitoriaPc}\n`);    
+}if (vitoriaMinha == vitoriaPc) {
+    console.log(`\nNiguem venceu, Empataram ${vitoriaPc} a ${vitoriaMinha}`);
+}else{
+    console.log(`\nO computador venceu com total de vitoria: ${vitoriaPc}`);
+    console.log(`Você perdeu com total de vitoria: ${vitoriaMinha}\n`);
+}
 
 ```
