@@ -99,6 +99,7 @@ while (pergunta == 'S') {
         
         // Aqui e pergunta se usuario que que jogar novamente entrando na condição verdadeira que while nessecita para que aja o loop.
         pergunta = prompt("Desejar jogar novamente S(sim) e N(nao): ").toUpperCase();
+        console.log('clear');
         
 
 }// finalizando o while
