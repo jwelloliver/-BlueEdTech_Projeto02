@@ -94,12 +94,11 @@ while (pergunta == 'S') {
         }else{
                 console.log(`\nO computador venceu com total de vitoria: ${vitoriaPc}`);
                 console.log(`Você perdeu com total de vitoria: ${vitoriaMinha}\n`);
-                console.log(` Empataram ${empate}vezes\n`);
+                console.log(` Empataram ${empate} vezes\n`);
         }
         
         // Aqui e pergunta se usuario que que jogar novamente entrando na condição verdadeira que while nessecita para que aja o loop.
         pergunta = prompt("Desejar jogar novamente S(sim) e N(nao): ").toUpperCase();
-        console.log('clear');
+        console.clear();// Função para limpar terminal.  
         
-
 }// finalizando o while
