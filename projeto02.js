@@ -33,9 +33,15 @@ while (pergunta == 'S') {
         
         // Aqui inicar o laço de repetição de acordo com as vezes de roda escolhida pelo usuario.
         for (cont = 0; cont < rodadas; cont++) {
-                
+                                
                 // Variavel que ira receber a escolha do usuario.
                 var minhaEscolha = prompt("Digite entre Pedra, Papel ou Tesoura: ").toUpperCase();
+
+                // While para validação do usuario, para aceitar so opções do jogo.
+                while (minhaEscolha != 'PEDRA' && minhaEscolha != 'PAPEL' && minhaEscolha !='TESOURA') {
+                        console.log("Escolha errada");
+                        var minhaEscolha = prompt("Digite entre Pedra, Papel ou Tesoura: ").toUpperCase();
+                   }
                 
                 // Variavel que sera escolhida de forma aleatoria pelo computador.
                 const pcEscolha = listaJogo[Math.floor(Math.random() * listaJogo.length)];
@@ -83,12 +89,12 @@ while (pergunta == 'S') {
         
         }else if (vitoriaMinha == vitoriaPc) {
                 console.log(`\nNiguem venceu, Empataram ${vitoriaPc} a ${vitoriaMinha} quantidade de vitorias para cada`);
-                console.log(` A mesma escolha para cada ${empate}\n rodada`);
+                console.log(` A mesma escolha para cada ${empate} rodada\n`);
         
         }else{
                 console.log(`\nO computador venceu com total de vitoria: ${vitoriaPc}`);
                 console.log(`Você perdeu com total de vitoria: ${vitoriaMinha}\n`);
-                console.log(` Empataram ${empate}\n veszes`);
+                console.log(` Empataram ${empate}vezes\n`);
         }
         
         // Aqui e pergunta se usuario que que jogar novamente entrando na condição verdadeira que while nessecita para que aja o loop.
