@@ -15,65 +15,84 @@ Perguntar se o Jogador quer jogar novamente: Se sim volte ao primeiro passo, se 
 var prompt = require('prompt-sync')();
 console.log("\n ##### Jogo Jokenpô ##### \n ")
 
-// Solicitar quantidade de rodadas que ira fazer
+// Variavel que vai reniciar o jogo, caso usuario queira jogar novamente.
 
-let rodadas = +prompt('Digite numero de rodadas: ');
-let cont = 0;
-let vitoriaMinha = 0;
-let vitoriaPc = 0 ;
+let pergunta = 'S'; // Inicar com valor 'S' string para entra no while na condição solicitada.
 
-// Criando um lista de pedra, papel e tesoura
-
+// Lista com os valores do jogo onde iremos rodar função random para escolha aletoria do Computador.
 const listaJogo = ['PEDRA','PAPEL','TESOURA'];
 
-// Criando um laço de repetição para quantidade de rodadas ira acontecer
-while (cont < rodadas) {
+// Aqui iniciar o jogo ja com a condição que foi declarada acima no laço.
+while (pergunta == 'S') {
 
-// Criando a variavel minha escolha
-var minhaEscolha = prompt("Digite entre Pedra, Papel ou Tesoura: ").toUpperCase();
- 
-// Escolhendo de forma eleatoria indice dentro da listaJogos, e armazenando em uma variavel a decisão do Computador
-const pcEscolha = listaJogo[Math.floor(Math.random() * listaJogo.length)];
+        let vitoriaMinha = 0; // Variavel de contagem de vitorias do usuario.
+        let vitoriaPc = 0 ; // Variavel de contagem de vitorias do computador.
+        let empate = 0; // Variavel de contagem de empate.
+        
+        let rodadas = +prompt('Digite numero de rodadas: ');// Variavel onde usuario entra com numero de rodadas.
+        
+        // Aqui inicar o laço de repetição de acordo com as vezes de roda escolhida pelo usuario.
+        for (cont = 0; cont < rodadas; cont++) {
+                
+                // Variavel que ira receber a escolha do usuario.
+                var minhaEscolha = prompt("Digite entre Pedra, Papel ou Tesoura: ").toUpperCase();
+                
+                // Variavel que sera escolhida de forma aleatoria pelo computador.
+                const pcEscolha = listaJogo[Math.floor(Math.random() * listaJogo.length)];
 
-// imprimindo minha decisao e do computador
-console.log(`\nMinha Decisao: ${minhaEscolha}`);
-console.log(`Decisao do compudator: ${pcEscolha}\n`);
+                // Aqui sera impressor na tela a decisão de cada
+                console.log(`\nMinha Decisao: ${minhaEscolha}`);
+                console.log(`Decisao do compudator: ${pcEscolha}\n`);
+                
+                // Condição para contagem de vitorias e empate de cada.
+                if (pcEscolha == 'PEDRA' && minhaEscolha == 'TESOURA') {
+                        console.log("Computador Ganhou !!");
+                        vitoriaPc = vitoriaPc + 1;
+                
+                }if (minhaEscolha == 'PEDRA' && pcEscolha == 'TESOURA') {
+                        console.log("Voce Ganhou !!");
+                        vitoriaMinha = vitoriaMinha + 1;
+                
+                }if (pcEscolha == 'PEDRA' && minhaEscolha == 'PAPEL') {
+                        console.log("Voce Ganhou !!");
+                        vitoriaMinha = vitoriaMinha + 1;
+                
+                }if (minhaEscolha == 'PEDRA' && pcEscolha == 'PAPEL') {
+                        console.log("Computador Ganhou !!");
+                        vitoriaPc = vitoriaPc + 1;
+                
+                }if (minhaEscolha == 'TESOURA' && pcEscolha == 'PAPEL') {
+                        console.log("Voce Ganhou !!");
+                        vitoriaMinha = vitoriaMinha + 1;
+                
+                }if (pcEscolha == 'TESOURA' && minhaEscolha == 'PAPEL') {
+                        console.log("Computador Ganhou !!");
+                        vitoriaPc = vitoriaPc + 1;
+                
+                }if (pcEscolha == minhaEscolha) {
+                        console.log("Ninguem Ganhou !!");
+                        empate = empate + 1;
+                }
+        } // for finalizando pelo numero de rodadas escolhida pelo usuario
+        
+        //condição para impressao na tela de quem e o vencedor e quantidade vitorias.
+        if (vitoriaMinha > vitoriaPc) {
+                console.log(`\nVocê venceu com total de vitoria: ${vitoriaMinha}`);
+                console.log(`computador perdeu com total de vitoria: ${vitoriaPc}\n`);
+                console.log(` Empataram ${empate}\n vezes`);
+        
+        }else if (vitoriaMinha == vitoriaPc) {
+                console.log(`\nNiguem venceu, Empataram ${vitoriaPc} a ${vitoriaMinha} quantidade de vitorias para cada`);
+                console.log(` A mesma escolha para cada ${empate}\n rodada`);
+        
+        }else{
+                console.log(`\nO computador venceu com total de vitoria: ${vitoriaPc}`);
+                console.log(`Você perdeu com total de vitoria: ${vitoriaMinha}\n`);
+                console.log(` Empataram ${empate}\n veszes`);
+        }
+        
+        // Aqui e pergunta se usuario que que jogar novamente entrando na condição verdadeira que while nessecita para que aja o loop.
+        pergunta = prompt("Desejar jogar novamente S(sim) e N(nao): ").toUpperCase();
+        
 
-// Condições para cada um Ganhar ou Perder e acumulando a vitoria de cada um na rodadas
-if (pcEscolha == 'PEDRA' && minhaEscolha == 'TESOURA') {    
-    console.log("Computador Ganhou !!");
-    vitoriaPc = vitoriaPc + 1;    
-}if (minhaEscolha == 'PEDRA' && pcEscolha == 'TESOURA') {
-    console.log("Voce Ganhou !!");
-    vitoriaMinha = vitoriaMinha + 1;     
-}if (pcEscolha == 'PEDRA' && minhaEscolha == 'PAPEL') {
-    console.log("Voce Ganhou !!");
-    vitoriaMinha = vitoriaMinha + 1;  
-}if (minhaEscolha == 'PEDRA' && pcEscolha == 'PAPEL') {
-    console.log("Computador Ganhou !!");
-    vitoriaPc = vitoriaPc + 1;
-}if (minhaEscolha == 'TESOURA' && pcEscolha == 'PAPEL') {
-    console.log("Voce Ganhou !!");
-    vitoriaMinha = vitoriaMinha + 1;  
-}if (pcEscolha == 'TESOURA' && minhaEscolha == 'PAPEL') {
-    console.log("Computador Ganhou !!");
-    vitoriaPc = vitoriaPc + 1;
-}if (pcEscolha == minhaEscolha) {
-    console.log("Ninguem Ganhou !!");
-}
-    cont++;
-} //Finalizando while
-
-// Condição fora do While para Esclarecer o vencedor por quantidade de Rodadas vencidas
-if (vitoriaMinha > vitoriaPc) {
-    console.log(`\nVocê venceu com total de vitoria: ${vitoriaMinha}`);
-    console.log(`computador perdeu com total de vitoria: ${vitoriaPc}\n`);    
-}if (vitoriaMinha == vitoriaPc) {
-    console.log(`\nNiguem venceu, Empataram ${vitoriaPc} a ${vitoriaMinha}`);
-}else{
-    console.log(`\nO computador venceu com total de vitoria: ${vitoriaPc}`);
-    console.log(`Você perdeu com total de vitoria: ${vitoriaMinha}\n`);
-}
-
-
-
+}// finalizando o while
